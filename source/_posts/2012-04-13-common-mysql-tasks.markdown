@@ -8,7 +8,7 @@ categories: mysql
 
 I'm pretty terrible at remembering some of the simpler MySQL tasks, so here are a few of the more common tasks I do on a regular basis that I keep written down so I don't forget them.
 
-##Dump The MySQL Table
+##Dump The MySQL Database
 
 `mysqldump -u username -p -r my_output.sql my_database`
 
@@ -20,7 +20,7 @@ I'm pretty terrible at remembering some of the simpler MySQL tasks, so here are 
 
 `7z e my_output.7z`
 
-##Restore The MySQL Table
+##Restore The MySQL Database
 
 `mysql -u username -p my_database < my_output.sql` 
 
