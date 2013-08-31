@@ -3,7 +3,7 @@ layout: post
 title: "A Simple Livecoding Environment For Overtone With Light Table"
 date: 2013-08-31 13:08
 comments: true
-categories: clojure, overtone, lighttable, livecoding, music  
+categories: clojure overtone lighttable livecoding music  
 ---
 
 I've been using [Overtone](http://overtone.github.io/) off and on for a while, and I've been wanting to try out [Light Table](http://www.lighttable.com/), so I decided to see if I could get Overtone working with it.
