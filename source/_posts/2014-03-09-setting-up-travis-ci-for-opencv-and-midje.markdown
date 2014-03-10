@@ -52,7 +52,6 @@ before_script:
   - jar -cMf opencv-native-248.jar native
   - lein2 localrepo install opencv-248.jar opencv/opencv 2.4.8
   - lein2 localrepo install opencv-native-248.jar opencv/opencv-native 2.4.8
-  - cp .tappedcv.examplesettings ~/.tappedcv
 ```
 With this configuration, we tell Travis CI that: our project is a Clojure project, that we are using Leiningen 2.0, midje for testing, and Oracle JDK 7. The lines after that are for building OpenCV.
 
