@@ -2,36 +2,36 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://seabre.github.io/blog/2012/04/13/common-mysql-tasks/</loc>
-        <lastmod>2014-03-09T21:17:59-04:00</lastmod>
+        <lastmod>2014-03-09T22:05:56-04:00</lastmod>
     </url>
     <url>
         <loc>
             http://seabre.github.io/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation/
         </loc>
-        <lastmod>2014-03-09T21:17:59-04:00</lastmod>
+        <lastmod>2014-03-09T22:05:56-04:00</lastmod>
     </url>
     <url>
         <loc>
             http://seabre.github.io/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/
         </loc>
-        <lastmod>2014-03-09T21:17:59-04:00</lastmod>
+        <lastmod>2014-03-09T22:05:56-04:00</lastmod>
     </url>
     <url>
         <loc>
             http://seabre.github.io/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje/
         </loc>
-        <lastmod>2014-03-09T21:59:57-04:00</lastmod>
+        <lastmod>2014-03-09T22:17:36-04:00</lastmod>
     </url>
     <url>
         <loc>http://seabre.github.io/blog/archives/</loc>
-        <lastmod>2014-03-09T21:59:57-04:00</lastmod>
+        <lastmod>2014-03-09T22:17:36-04:00</lastmod>
     </url>
     <url>
         <loc>http://seabre.github.io/robots.txt</loc>
-        <lastmod>2014-03-09T21:17:59-04:00</lastmod>
+        <lastmod>2014-03-09T22:05:56-04:00</lastmod>
     </url>
     <url>
         <loc>http://seabre.github.io/</loc>
-        <lastmod>2014-03-09T21:59:57-04:00</lastmod>
+        <lastmod>2014-03-09T22:17:36-04:00</lastmod>
     </url>
 </urlset>

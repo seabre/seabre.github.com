@@ -4,7 +4,7 @@
   <title><![CDATA[Category: travis-ci | Sean Brewer]]></title>
   <link href="http://seabre.github.io/blog/categories/travis-ci/atom.xml" rel="self"/>
   <link href="http://seabre.github.io/"/>
-  <updated>2014-03-09T22:05:19-04:00</updated>
+  <updated>2014-03-09T22:18:07-04:00</updated>
   <id>http://seabre.github.io/</id>
   <author>
     <name><![CDATA[Sean Brewer]]></name>
@@ -64,7 +64,6 @@ jdk:
   &ndash; jar -cMf opencv-native-248.jar native
   &ndash; lein2 localrepo install opencv-248.jar opencv/opencv 2.4.8
   &ndash; lein2 localrepo install opencv-native-248.jar opencv/opencv-native 2.4.8
-  &ndash; cp .tappedcv.examplesettings ~/.tappedcv
 ```
 With this configuration, we tell Travis CI that: our project is a Clojure project, that we are using Leiningen 2.0, midje for testing, and Oracle JDK 7. The lines after that are for building OpenCV.</p>
 
