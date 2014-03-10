@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://seabre.github.io/sitemap.xml 

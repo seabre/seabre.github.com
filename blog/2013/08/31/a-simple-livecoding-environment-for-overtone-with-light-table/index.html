@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sean Brewer</title>
+  <title>A Simple Livecoding Environment for Overtone With Light Table - Sean Brewer</title>
   <meta name="author" content="Sean Brewer">
 
   
-  <meta name="description" content="I’ve been fiddling with OpenCV for a few weeks. Using OpenCV and Clojure is straightforward. The hardest part was setting up OpenCV. When I’m &hellip;">
+  <meta name="description" content="I&rsquo;ve been using Overtone off and on for a while, and I&rsquo;ve been wanting to try out Light Table, so I decided to see if I could get &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://seabre.github.io">
+  <link rel="canonical" href="http://seabre.github.io/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Sean Brewer" type="application/atom+xml">
@@ -73,137 +73,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje/">Setting Up Travis CI for OpenCV and Midje</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-09T20:56:00-04:00" pubdate data-updated="true">Mar 9<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve been fiddling with <a href="http://opencv.org">OpenCV</a> for a few weeks. Using OpenCV and Clojure is straightforward. The hardest part was setting up OpenCV.</p>
-
-<p>When I’m experimenting and I get to a place where I feel like I know what I’m doing, I’ll start writing tests. Eventually you&rsquo;ll setup continuous integration, but then you remember how difficult installing OpenCV was! If you’d like to use Travis CI with your Clojure project using OpenCV, I’ve already done the work for you! Swapping out midje isn’t a problem, if you’d rather use core.test or speclj, but I’m going to focus on midje here.</p>
-
-<p>I’m assuming your project looks something like Magomimmo’s <a href="https://github.com/magomimmo/opencv-start">opencv-start</a>. He’s also the guy that wrote the <a href="http://docs.opencv.org/2.4/doc/tutorials/introduction/clojure_dev_intro/clojure_dev_intro.html">Clojure tutorial</a> on OpenCV’s documentation site. If you setup your project using those instructions, that is fine since they are almost identical. The only difference is that I’m using a more more up to date version of OpenCV. You will have to make a few changes to the Travis CI yaml configuration below if you want to use a different version.</p>
-
-<p>First, we need to add the midje and lein localrepo plugins to our project.clj if they aren’t there already. Travis CI needs to know about them. Adding the following line inside defproject within your project.clj should suffice:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='clojure'><span class='line'><span class="ss">:plugins</span> <span class="p">[[</span><span class="nv">lein-localrepo</span> <span class="s">&quot;0.5.3&quot;</span><span class="p">]</span> <span class="p">[</span><span class="nv">lein-midje</span> <span class="s">&quot;3.1.3&quot;</span><span class="p">]]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Next, we need to add the <code>.travis.yml</code> config to the root of the repo:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">language</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">clojure</span>
-</span><span class='line'><span class="l-Scalar-Plain">lein</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">lein2</span>
-</span><span class='line'><span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">lein2 midje</span>
-</span><span class='line'><span class="l-Scalar-Plain">jdk</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">oraclejdk7</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">compiler</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">gcc</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">before_install</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">sudo apt-get update</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">install</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">sudo apt-get install python-dev python-numpy</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">before_script</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git clone https://github.com/Itseez/opencv.git</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cd opencv</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git checkout 2.4</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mkdir build</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cd build</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cmake ..</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">make -j8</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">sudo make -j8 install</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cd ../..</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mkdir -p native/linux/x86_64</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cp opencv/build/lib/libopencv_java248.so native/linux/x86_64/libopencv_java248.so</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cp opencv/build/bin/opencv-248.jar .</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">jar -cMf opencv-native-248.jar native</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">lein2 localrepo install opencv-248.jar opencv/opencv 2.4.8</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">lein2 localrepo install opencv-native-248.jar opencv/opencv-native 2.4.8</span>
-</span><span class='line'>  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cp .tappedcv.examplesettings ~/.tappedcv</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>With this configuration, we tell Travis CI that: our project is a Clojure project, that we are using Leiningen 2.0, midje for testing, and Oracle JDK 7. The lines after that are for building OpenCV.</p>
-
-<p>The lines before <code>before_script</code> tell Travis CI that: we need to use the GCC compiler, install python dev dependencies, and numpy for OpenCV. The lines in <code>before_script</code> are the actual build process automation for OpenCV.</p>
-
-<p>If you noticed that the <code>before_script</code> is similar to the build steps in Magomimmo’s tutorial, you would be right. The only change I made was to use OpenCV 2.4.8. If you’d like to use a different release, you should change the <code>before_script</code> to match your needs. On Travis CI, the build process takes about 8 minutes.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/">A Simple Livecoding Environment for Overtone With Light Table</a></h1>
+      <h1 class="entry-title">A Simple Livecoding Environment for Overtone With Light Table</h1>
     
     
       <p class="meta">
@@ -226,7 +101,7 @@
   </header>
 
 
-  <div class="entry-content"><p>I&rsquo;ve been using <a href="http://overtone.github.io/">Overtone</a> off and on for a while, and I&rsquo;ve been wanting to try out <a href="http://www.lighttable.com/">Light Table</a>, so I decided to see if I could get Overtone working with it.</p>
+<div class="entry-content"><p>I&rsquo;ve been using <a href="http://overtone.github.io/">Overtone</a> off and on for a while, and I&rsquo;ve been wanting to try out <a href="http://www.lighttable.com/">Light Table</a>, so I decided to see if I could get Overtone working with it.</p>
 
 <p>Emacs is pretty much the standard for livecoding in Overtone, but it&rsquo;s not the most accessible environment for beginners. I actually use vim, but it&rsquo;s not that great, either. Light Table seems to be a good alternative, but I ran into some project dependency problems getting it setup. The fixes are easy to duplicate. After the problem is solved, it&rsquo;s nice.</p>
 
@@ -323,91 +198,16 @@
 
 <p>Highlight <code>(demo (sin-osc))</code> and press <code>Ctrl+Enter</code> and you should hear a simple Sine wave.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation/">Blum Blum Shub Pseudo Random Number Generator Coffeescript Implementation</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
   
 
+<span class="byline author vcard">Posted by <span class="fn">Sean Brewer</span></span>
 
-<time datetime="2012-04-14T23:40:00-04:00" pubdate data-updated="true">Apr 14<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This weekend hasn&rsquo;t been as busy as they have been lately, so I&rsquo;ve had a lot more time to just sit around. I was reading some articles on PRNGs, and a PRNG I&rsquo;ve never heard of caught my eye. Mainly, I think, because of its name. <a href="http://en.wikipedia.org/wiki/Blum_Blum_Shub">Blum Blum Shub</a> is a PRNG devised by some mathematicians and computer scientists in the mid 1980&rsquo;s. I decided to do a Coffeescript implementation of it.</p>
-
-<div><script src='https://gist.github.com/2389826.js'></script>
-<noscript><pre><code># An implementation of assert.
-AssertException = (message) -&gt;
-  @message = message
-assert = (exp, message) -&gt;
-  throw new AssertException(message)  unless exp
-AssertException::toString = -&gt;
-  &quot;AssertException: &quot; + @message
-
-
-
-# Implementation of Blum Blum Shub 
-# p - Large Prime 1. Should be congruent to 3 mod 4.
-# q - Large Prime 2. Should be to congruent to 3 mod 4.
-# s - The seed. Should be a co-prime of the product of p and q.
-
-blum_blum_shub = (p,q,s,i) -&gt;
-  # Primes p and q must be congruent to 3 mod 4
-  assert((p % 4) == 3, &quot;Error: Prime P is not congruent to 3 mod 4&quot;)
-  assert((q % 4) == 3, &quot;Error: Prime Q is not congruent to 3 mod 4&quot;)
-
-  m = p * q
-  
-  x = s
-
-  for step in [0..i]
-    x = (x * x) % m
-  
-  x</code></pre></noscript></div>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/13/common-mysql-tasks/">Common MySQL Tasks</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -419,47 +219,48 @@ blum_blum_shub = (p,q,s,i) -&gt;
   
 
 
-<time datetime="2012-04-13T00:34:00-04:00" pubdate data-updated="true">Apr 13<span>th</span>, 2012</time>
-        
-      </p>
+<time datetime="2013-08-31T13:08:00-04:00" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/clojure/'>clojure</a>, <a class='category' href='/blog/categories/lighttable/'>lighttable</a>, <a class='category' href='/blog/categories/livecoding/'>livecoding</a>, <a class='category' href='/blog/categories/music/'>music</a>, <a class='category' href='/blog/categories/overtone/'>overtone</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>I&rsquo;m pretty terrible at remembering some of the simpler MySQL tasks, so here are a few of the more common tasks I do on a regular basis that I keep written down so I don&rsquo;t forget them.</p>
-
-<h2>Dump The MySQL Database</h2>
-
-<p><code>mysqldump -u username -p -r my_output.sql my_database</code></p>
-
-<h3>Compress Output with 7zip using the PPMd Algorithm (Optional)</h3>
-
-<p><code>7z a -t7z my_output.7z my_output.sql -m0=PPMd</code></p>
-
-<h3>Decompress Output with 7zip (Optional)</h3>
-
-<p><code>7z e my_output.7z</code></p>
-
-<h2>Restore The MySQL Database</h2>
-
-<p><code>mysql -u username -p my_database &lt; my_output.sql</code></p>
-
-<h2>Export Table as CSV From MySQL</h2>
-
-<p><code>SELECT * INTO OUTFILE '/tmp/my_table_name.csv' FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '\\' LINES TERMINATED BY '\n' FROM my_table_name;</code></p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://seabre.github.io/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/" data-via="seabre" data-counturl="http://seabre.github.io/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation/" title="Previous Post: Blum Blum Shub Pseudo Random Number Generator Coffeescript Implementation">&laquo; Blum Blum Shub Pseudo Random Number Generator Coffeescript Implementation</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje/" title="Next Post: Setting Up Travis CI for OpenCV and Midje">Setting Up Travis CI for OpenCV and Midje &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
+  </section>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -488,7 +289,7 @@ blum_blum_shub = (p,q,s,i) -&gt;
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/seabre">@seabre</a> on GitHub
@@ -530,6 +331,7 @@ blum_blum_shub = (p,q,s,i) -&gt;
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -544,7 +346,10 @@ blum_blum_shub = (p,q,s,i) -&gt;
       var disqus_shortname = 'seabre';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://seabre.github.io/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/';
+        var disqus_url = 'http://seabre.github.io/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

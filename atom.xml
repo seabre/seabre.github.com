@@ -1,110 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Sean Brewer</title>
-  <meta name="author" content="Sean Brewer">
-
-  
-  <meta name="description" content="I’ve been fiddling with OpenCV for a few weeks. Using OpenCV and Clojure is straightforward. The hardest part was setting up OpenCV. When I’m &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://seabre.github.io">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Sean Brewer" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-5393331-4']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">Sean Brewer</a></h1>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:seabre.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[Sean Brewer]]></title>
+  <link href="http://seabre.github.io/atom.xml" rel="self"/>
+  <link href="http://seabre.github.io/"/>
+  <updated>2014-03-09T22:05:19-04:00</updated>
+  <id>http://seabre.github.io/</id>
+  <author>
+    <name><![CDATA[Sean Brewer]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje/">Setting Up Travis CI for OpenCV and Midje</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2014-03-09T20:56:00-04:00" pubdate data-updated="true">Mar 9<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve been fiddling with <a href="http://opencv.org">OpenCV</a> for a few weeks. Using OpenCV and Clojure is straightforward. The hardest part was setting up OpenCV.</p>
+  <entry>
+    <title type="html"><![CDATA[Setting Up Travis CI for OpenCV and Midje]]></title>
+    <link href="http://seabre.github.io/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje/"/>
+    <updated>2014-03-09T20:56:00-04:00</updated>
+    <id>http://seabre.github.io/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje</id>
+    <content type="html"><![CDATA[<p>I’ve been fiddling with <a href="http://opencv.org">OpenCV</a> for a few weeks. Using OpenCV and Clojure is straightforward. The hardest part was setting up OpenCV.</p>
 
 <p>When I’m experimenting and I get to a place where I feel like I know what I’m doing, I’ll start writing tests. Eventually you&rsquo;ll setup continuous integration, but then you remember how difficult installing OpenCV was! If you’d like to use Travis CI with your Clojure project using OpenCV, I’ve already done the work for you! Swapping out midje isn’t a problem, if you’d rather use core.test or speclj, but I’m going to focus on midje here.</p>
 
@@ -191,42 +105,15 @@
 <p>The lines before <code>before_script</code> tell Travis CI that: we need to use the GCC compiler, install python dev dependencies, and numpy for OpenCV. The lines in <code>before_script</code> are the actual build process automation for OpenCV.</p>
 
 <p>If you noticed that the <code>before_script</code> is similar to the build steps in Magomimmo’s tutorial, you would be right. The only change I made was to use OpenCV 2.4.8. If you’d like to use a different release, you should change the <code>before_script</code> to match your needs. On Travis CI, the build process takes about 8 minutes.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/">A Simple Livecoding Environment for Overtone With Light Table</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-31T13:08:00-04:00" pubdate data-updated="true">Aug 31<span>st</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&rsquo;ve been using <a href="http://overtone.github.io/">Overtone</a> off and on for a while, and I&rsquo;ve been wanting to try out <a href="http://www.lighttable.com/">Light Table</a>, so I decided to see if I could get Overtone working with it.</p>
+  <entry>
+    <title type="html"><![CDATA[A Simple Livecoding Environment for Overtone With Light Table]]></title>
+    <link href="http://seabre.github.io/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/"/>
+    <updated>2013-08-31T13:08:00-04:00</updated>
+    <id>http://seabre.github.io/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been using <a href="http://overtone.github.io/">Overtone</a> off and on for a while, and I&rsquo;ve been wanting to try out <a href="http://www.lighttable.com/">Light Table</a>, so I decided to see if I could get Overtone working with it.</p>
 
 <p>Emacs is pretty much the standard for livecoding in Overtone, but it&rsquo;s not the most accessible environment for beginners. I actually use vim, but it&rsquo;s not that great, either. Light Table seems to be a good alternative, but I ran into some project dependency problems getting it setup. The fixes are easy to duplicate. After the problem is solved, it&rsquo;s nice.</p>
 
@@ -322,42 +209,15 @@
 
 
 <p>Highlight <code>(demo (sin-osc))</code> and press <code>Ctrl+Enter</code> and you should hear a simple Sine wave.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation/">Blum Blum Shub Pseudo Random Number Generator Coffeescript Implementation</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-14T23:40:00-04:00" pubdate data-updated="true">Apr 14<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This weekend hasn&rsquo;t been as busy as they have been lately, so I&rsquo;ve had a lot more time to just sit around. I was reading some articles on PRNGs, and a PRNG I&rsquo;ve never heard of caught my eye. Mainly, I think, because of its name. <a href="http://en.wikipedia.org/wiki/Blum_Blum_Shub">Blum Blum Shub</a> is a PRNG devised by some mathematicians and computer scientists in the mid 1980&rsquo;s. I decided to do a Coffeescript implementation of it.</p>
+  <entry>
+    <title type="html"><![CDATA[Blum Blum Shub Pseudo Random Number Generator Coffeescript Implementation]]></title>
+    <link href="http://seabre.github.io/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation/"/>
+    <updated>2012-04-14T23:40:00-04:00</updated>
+    <id>http://seabre.github.io/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation</id>
+    <content type="html"><![CDATA[<p>This weekend hasn&rsquo;t been as busy as they have been lately, so I&rsquo;ve had a lot more time to just sit around. I was reading some articles on PRNGs, and a PRNG I&rsquo;ve never heard of caught my eye. Mainly, I think, because of its name. <a href="http://en.wikipedia.org/wiki/Blum_Blum_Shub">Blum Blum Shub</a> is a PRNG devised by some mathematicians and computer scientists in the mid 1980&rsquo;s. I decided to do a Coffeescript implementation of it.</p>
 
 <div><script src='https://gist.github.com/2389826.js'></script>
 <noscript><pre><code># An implementation of assert.
@@ -391,42 +251,15 @@ blum_blum_shub = (p,q,s,i) -&gt;
 
 
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/13/common-mysql-tasks/">Common MySQL Tasks</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-13T00:34:00-04:00" pubdate data-updated="true">Apr 13<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&rsquo;m pretty terrible at remembering some of the simpler MySQL tasks, so here are a few of the more common tasks I do on a regular basis that I keep written down so I don&rsquo;t forget them.</p>
+  <entry>
+    <title type="html"><![CDATA[Common MySQL Tasks]]></title>
+    <link href="http://seabre.github.io/blog/2012/04/13/common-mysql-tasks/"/>
+    <updated>2012-04-13T00:34:00-04:00</updated>
+    <id>http://seabre.github.io/blog/2012/04/13/common-mysql-tasks</id>
+    <content type="html"><![CDATA[<p>I&rsquo;m pretty terrible at remembering some of the simpler MySQL tasks, so here are a few of the more common tasks I do on a regular basis that I keep written down so I don&rsquo;t forget them.</p>
 
 <h2>Dump The MySQL Database</h2>
 
@@ -447,140 +280,7 @@ blum_blum_shub = (p,q,s,i) -&gt;
 <h2>Export Table as CSV From MySQL</h2>
 
 <p><code>SELECT * INTO OUTFILE '/tmp/my_table_name.csv' FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '\\' LINES TERMINATED BY '\n' FROM my_table_name;</code></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje/">Setting Up Travis CI for OpenCV and Midje</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/">A Simple Livecoding Environment for Overtone With Light Table</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation/">Blum Blum Shub Pseudo Random Number Generator Coffeescript Implementation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/04/13/common-mysql-tasks/">Common MySQL Tasks</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
-  </ul>
-  
-  <a href="https://github.com/seabre">@seabre</a> on GitHub
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'seabre',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
-<section class="googleplus">
-  <h1>
-    <a href="https://plus.google.com/108542617340318111239?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Sean Brewer -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'seabre';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>

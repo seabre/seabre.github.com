@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: testing | Sean Brewer]]></title>
+  <link href="http://seabre.github.io/blog/categories/testing/atom.xml" rel="self"/>
+  <link href="http://seabre.github.io/"/>
+  <updated>2014-03-09T22:05:19-04:00</updated>
+  <id>http://seabre.github.io/</id>
+  <author>
+    <name><![CDATA[Sean Brewer]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Setting Up Travis CI for OpenCV and Midje]]></title>
+    <link href="http://seabre.github.io/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje/"/>
+    <updated>2014-03-09T20:56:00-04:00</updated>
+    <id>http://seabre.github.io/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje</id>
+    <content type="html"><![CDATA[<p>I’ve been fiddling with <a href="http://opencv.org">OpenCV</a> for a few weeks. Using OpenCV and Clojure is straightforward. The hardest part was setting up OpenCV.</p>
+
+<p>When I’m experimenting and I get to a place where I feel like I know what I’m doing, I’ll start writing tests. Eventually you&rsquo;ll setup continuous integration, but then you remember how difficult installing OpenCV was! If you’d like to use Travis CI with your Clojure project using OpenCV, I’ve already done the work for you! Swapping out midje isn’t a problem, if you’d rather use core.test or speclj, but I’m going to focus on midje here.</p>
+
+<p>I’m assuming your project looks something like Magomimmo’s <a href="https://github.com/magomimmo/opencv-start">opencv-start</a>. He’s also the guy that wrote the <a href="http://docs.opencv.org/2.4/doc/tutorials/introduction/clojure_dev_intro/clojure_dev_intro.html">Clojure tutorial</a> on OpenCV’s documentation site. If you setup your project using those instructions, that is fine since they are almost identical. The only difference is that I’m using a more more up to date version of OpenCV. You will have to make a few changes to the Travis CI yaml configuration below if you want to use a different version.</p>
+
+<p>First, we need to add the midje and lein localrepo plugins to our project.clj if they aren’t there already. Travis CI needs to know about them. Adding the following line inside defproject within your project.clj should suffice:</p>
+
+<p><code>clojure
+:plugins [[lein-localrepo "0.5.3"] [lein-midje "3.1.3"]]
+</code></p>
+
+<p>Next, we need to add the <code>.travis.yml</code> config to the root of the repo:</p>
+
+<p>```yaml
+language: clojure
+lein: lein2
+script: lein2 midje
+jdk:
+  &ndash; oraclejdk7</p>
+
+<p>compiler:
+  &ndash; gcc</p>
+
+<p>before_install:
+  &ndash; sudo apt-get update</p>
+
+<p>install:
+  &ndash; sudo apt-get install python-dev python-numpy</p>
+
+<p>before_script:
+  &ndash; git clone <a href="https://github.com/Itseez/opencv.git">https://github.com/Itseez/opencv.git</a>
+  &ndash; cd opencv
+  &ndash; git checkout 2.4
+  &ndash; mkdir build
+  &ndash; cd build
+  &ndash; cmake ..
+  &ndash; make -j8
+  &ndash; sudo make -j8 install
+  &ndash; cd ../..
+  &ndash; mkdir -p native/linux/x86_64
+  &ndash; cp opencv/build/lib/libopencv_java248.so native/linux/x86_64/libopencv_java248.so
+  &ndash; cp opencv/build/bin/opencv-248.jar .
+  &ndash; jar -cMf opencv-native-248.jar native
+  &ndash; lein2 localrepo install opencv-248.jar opencv/opencv 2.4.8
+  &ndash; lein2 localrepo install opencv-native-248.jar opencv/opencv-native 2.4.8
+  &ndash; cp .tappedcv.examplesettings ~/.tappedcv
+```
+With this configuration, we tell Travis CI that: our project is a Clojure project, that we are using Leiningen 2.0, midje for testing, and Oracle JDK 7. The lines after that are for building OpenCV.</p>
+
+<p>The lines before <code>before_script</code> tell Travis CI that: we need to use the GCC compiler, install python dev dependencies, and numpy for OpenCV. The lines in <code>before_script</code> are the actual build process automation for OpenCV.</p>
+
+<p>If you noticed that the <code>before_script</code> is similar to the build steps in Magomimmo’s tutorial, you would be right. The only change I made was to use OpenCV 2.4.8. If you’d like to use a different release, you should change the <code>before_script</code> to match your needs. On Travis CI, the build process takes about 8 minutes.</p>
+]]></content>
+  </entry>
+  
+</feed>

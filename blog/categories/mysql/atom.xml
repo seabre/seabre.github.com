@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mysql | Sean Brewer]]></title>
+  <link href="http://seabre.github.io/blog/categories/mysql/atom.xml" rel="self"/>
+  <link href="http://seabre.github.io/"/>
+  <updated>2014-03-09T22:05:19-04:00</updated>
+  <id>http://seabre.github.io/</id>
+  <author>
+    <name><![CDATA[Sean Brewer]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Common MySQL Tasks]]></title>
+    <link href="http://seabre.github.io/blog/2012/04/13/common-mysql-tasks/"/>
+    <updated>2012-04-13T00:34:00-04:00</updated>
+    <id>http://seabre.github.io/blog/2012/04/13/common-mysql-tasks</id>
+    <content type="html"><![CDATA[<p>I&rsquo;m pretty terrible at remembering some of the simpler MySQL tasks, so here are a few of the more common tasks I do on a regular basis that I keep written down so I don&rsquo;t forget them.</p>
+
+<h2>Dump The MySQL Database</h2>
+
+<p><code>mysqldump -u username -p -r my_output.sql my_database</code></p>
+
+<h3>Compress Output with 7zip using the PPMd Algorithm (Optional)</h3>
+
+<p><code>7z a -t7z my_output.7z my_output.sql -m0=PPMd</code></p>
+
+<h3>Decompress Output with 7zip (Optional)</h3>
+
+<p><code>7z e my_output.7z</code></p>
+
+<h2>Restore The MySQL Database</h2>
+
+<p><code>mysql -u username -p my_database &lt; my_output.sql</code></p>
+
+<h2>Export Table as CSV From MySQL</h2>
+
+<p><code>SELECT * INTO OUTFILE '/tmp/my_table_name.csv' FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '\\' LINES TERMINATED BY '\n' FROM my_table_name;</code></p>
+]]></content>
+  </entry>
+  
+</feed>
