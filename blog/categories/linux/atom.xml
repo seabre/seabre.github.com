@@ -4,7 +4,7 @@
   <title><![CDATA[Category: linux | Sean Brewer]]></title>
   <link href="http://seabre.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://seabre.github.io/"/>
-  <updated>2015-10-17T22:40:37-04:00</updated>
+  <updated>2015-10-17T22:45:46-04:00</updated>
   <id>http://seabre.github.io/</id>
   <author>
     <name><![CDATA[Sean Brewer]]></name>
@@ -18,10 +18,10 @@
     <link href="http://seabre.github.io/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04/"/>
     <updated>2015-10-17T21:21:26-04:00</updated>
     <id>http://seabre.github.io/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04</id>
-    <content type="html"><![CDATA[<p>I received my GitHub-themed U2F Yubikey this week. U2F is an open, standardized protocol for allowing people to authenticate with a device. It hasn&rsquo;t been around long, but there are already strong efforts to get people to use it.</p>
+    <content type="html"><![CDATA[<p>I received my GitHub-themed U2F Yubikey this week. <a href="https://en.wikipedia.org/wiki/Universal_2nd_Factor">U2F</a> is an open, standardized protocol for allowing people to authenticate with a device. It hasn&rsquo;t been around long, but there are already <a href="https://www.yubico.com/why-yubico/for-individuals/github/">strong efforts</a> to get people to use it.</p>
 
-<p>If you&rsquo;ve used the Google Authenticator app,  you&rsquo;ll see the utility of a U2F key as it&rsquo;s much smaller. Getting it to work is as simple as inserting the key and pressing a button.
-A majority of implementations, and there aren&rsquo;t many, are web-services  like Google and GitHub. Yubico has produced a pam-u2f module that allows you to hook in U2F authentication to PAM. PAM is what Linux uses to allow adding and customizing various authentication mechanisms.</p>
+<p>If you&rsquo;ve used the Google Authenticator app,  you&rsquo;ll see the utility of a U2F key as it&rsquo;s much smaller than a smartphone. Getting it to work is as simple as inserting the key and pressing a button.
+A majority of implementations, and there aren&rsquo;t many, are web services like Google and GitHub. <a href="https://www.yubico.com/">Yubico</a> has produced a <a href="https://developers.yubico.com/pam-u2f/">pam-u2f</a> module that allows you to hook in U2F authentication to PAM. PAM is what Linux uses to allow adding and customizing various authentication mechanisms.</p>
 
 <h2>Getting Started</h2>
 
