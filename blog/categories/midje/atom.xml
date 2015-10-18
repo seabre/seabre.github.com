@@ -4,7 +4,7 @@
   <title><![CDATA[Category: midje | Sean Brewer]]></title>
   <link href="http://seabre.github.io/blog/categories/midje/atom.xml" rel="self"/>
   <link href="http://seabre.github.io/"/>
-  <updated>2014-03-09T22:18:07-04:00</updated>
+  <updated>2015-10-17T20:16:49-04:00</updated>
   <id>http://seabre.github.io/</id>
   <author>
     <name><![CDATA[Sean Brewer]]></name>
@@ -26,46 +26,45 @@
 
 <p>First, we need to add the midje and lein localrepo plugins to our project.clj if they aren’t there already. Travis CI needs to know about them. Adding the following line inside defproject within your project.clj should suffice:</p>
 
-<p><code>clojure
-:plugins [[lein-localrepo "0.5.3"] [lein-midje "3.1.3"]]
-</code></p>
+<pre><code class="clojure">:plugins [[lein-localrepo "0.5.3"] [lein-midje "3.1.3"]]
+</code></pre>
 
 <p>Next, we need to add the <code>.travis.yml</code> config to the root of the repo:</p>
 
-<p>```yaml
-language: clojure
+<pre><code class="yaml">language: clojure
 lein: lein2
 script: lein2 midje
 jdk:
-  &ndash; oraclejdk7</p>
+  - oraclejdk7
 
-<p>compiler:
-  &ndash; gcc</p>
+compiler: 
+  - gcc
 
-<p>before_install:
-  &ndash; sudo apt-get update</p>
+before_install:
+  - sudo apt-get update
 
-<p>install:
-  &ndash; sudo apt-get install python-dev python-numpy</p>
+install:
+  - sudo apt-get install python-dev python-numpy
 
-<p>before_script:
-  &ndash; git clone <a href="https://github.com/Itseez/opencv.git">https://github.com/Itseez/opencv.git</a>
-  &ndash; cd opencv
-  &ndash; git checkout 2.4
-  &ndash; mkdir build
-  &ndash; cd build
-  &ndash; cmake ..
-  &ndash; make -j8
-  &ndash; sudo make -j8 install
-  &ndash; cd ../..
-  &ndash; mkdir -p native/linux/x86_64
-  &ndash; cp opencv/build/lib/libopencv_java248.so native/linux/x86_64/libopencv_java248.so
-  &ndash; cp opencv/build/bin/opencv-248.jar .
-  &ndash; jar -cMf opencv-native-248.jar native
-  &ndash; lein2 localrepo install opencv-248.jar opencv/opencv 2.4.8
-  &ndash; lein2 localrepo install opencv-native-248.jar opencv/opencv-native 2.4.8
-```
-With this configuration, we tell Travis CI that: our project is a Clojure project, that we are using Leiningen 2.0, midje for testing, and Oracle JDK 7. The lines after that are for building OpenCV.</p>
+before_script:
+  - git clone https://github.com/Itseez/opencv.git
+  - cd opencv
+  - git checkout 2.4
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make -j8
+  - sudo make -j8 install
+  - cd ../..
+  - mkdir -p native/linux/x86_64
+  - cp opencv/build/lib/libopencv_java248.so native/linux/x86_64/libopencv_java248.so
+  - cp opencv/build/bin/opencv-248.jar .
+  - jar -cMf opencv-native-248.jar native
+  - lein2 localrepo install opencv-248.jar opencv/opencv 2.4.8
+  - lein2 localrepo install opencv-native-248.jar opencv/opencv-native 2.4.8
+</code></pre>
+
+<p>With this configuration, we tell Travis CI that: our project is a Clojure project, that we are using Leiningen 2.0, midje for testing, and Oracle JDK 7. The lines after that are for building OpenCV.</p>
 
 <p>The lines before <code>before_script</code> tell Travis CI that: we need to use the GCC compiler, install python dev dependencies, and numpy for OpenCV. The lines in <code>before_script</code> are the actual build process automation for OpenCV.</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: clojure | Sean Brewer]]></title>
   <link href="http://seabre.github.io/blog/categories/clojure/atom.xml" rel="self"/>
   <link href="http://seabre.github.io/"/>
-  <updated>2014-03-09T22:18:07-04:00</updated>
+  <updated>2015-10-17T20:16:49-04:00</updated>
   <id>http://seabre.github.io/</id>
   <author>
     <name><![CDATA[Sean Brewer]]></name>
@@ -26,46 +26,45 @@
 
 <p>First, we need to add the midje and lein localrepo plugins to our project.clj if they aren’t there already. Travis CI needs to know about them. Adding the following line inside defproject within your project.clj should suffice:</p>
 
-<p><code>clojure
-:plugins [[lein-localrepo "0.5.3"] [lein-midje "3.1.3"]]
-</code></p>
+<pre><code class="clojure">:plugins [[lein-localrepo "0.5.3"] [lein-midje "3.1.3"]]
+</code></pre>
 
 <p>Next, we need to add the <code>.travis.yml</code> config to the root of the repo:</p>
 
-<p>```yaml
-language: clojure
+<pre><code class="yaml">language: clojure
 lein: lein2
 script: lein2 midje
 jdk:
-  &ndash; oraclejdk7</p>
+  - oraclejdk7
 
-<p>compiler:
-  &ndash; gcc</p>
+compiler: 
+  - gcc
 
-<p>before_install:
-  &ndash; sudo apt-get update</p>
+before_install:
+  - sudo apt-get update
 
-<p>install:
-  &ndash; sudo apt-get install python-dev python-numpy</p>
+install:
+  - sudo apt-get install python-dev python-numpy
 
-<p>before_script:
-  &ndash; git clone <a href="https://github.com/Itseez/opencv.git">https://github.com/Itseez/opencv.git</a>
-  &ndash; cd opencv
-  &ndash; git checkout 2.4
-  &ndash; mkdir build
-  &ndash; cd build
-  &ndash; cmake ..
-  &ndash; make -j8
-  &ndash; sudo make -j8 install
-  &ndash; cd ../..
-  &ndash; mkdir -p native/linux/x86_64
-  &ndash; cp opencv/build/lib/libopencv_java248.so native/linux/x86_64/libopencv_java248.so
-  &ndash; cp opencv/build/bin/opencv-248.jar .
-  &ndash; jar -cMf opencv-native-248.jar native
-  &ndash; lein2 localrepo install opencv-248.jar opencv/opencv 2.4.8
-  &ndash; lein2 localrepo install opencv-native-248.jar opencv/opencv-native 2.4.8
-```
-With this configuration, we tell Travis CI that: our project is a Clojure project, that we are using Leiningen 2.0, midje for testing, and Oracle JDK 7. The lines after that are for building OpenCV.</p>
+before_script:
+  - git clone https://github.com/Itseez/opencv.git
+  - cd opencv
+  - git checkout 2.4
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make -j8
+  - sudo make -j8 install
+  - cd ../..
+  - mkdir -p native/linux/x86_64
+  - cp opencv/build/lib/libopencv_java248.so native/linux/x86_64/libopencv_java248.so
+  - cp opencv/build/bin/opencv-248.jar .
+  - jar -cMf opencv-native-248.jar native
+  - lein2 localrepo install opencv-248.jar opencv/opencv 2.4.8
+  - lein2 localrepo install opencv-native-248.jar opencv/opencv-native 2.4.8
+</code></pre>
+
+<p>With this configuration, we tell Travis CI that: our project is a Clojure project, that we are using Leiningen 2.0, midje for testing, and Oracle JDK 7. The lines after that are for building OpenCV.</p>
 
 <p>The lines before <code>before_script</code> tell Travis CI that: we need to use the GCC compiler, install python dev dependencies, and numpy for OpenCV. The lines in <code>before_script</code> are the actual build process automation for OpenCV.</p>
 
@@ -92,54 +91,36 @@ With this configuration, we tell Travis CI that: our project is a Clojure projec
 
 <p>Inside your <code>livecoding</code> project, you should have <code>project.clj</code>, which looks like this:</p>
 
-<p>```clojure
-(defproject livecoding &ldquo;0.1.0-SNAPSHOT&rdquo;
-  :description &ldquo;FIXME: write description&rdquo;
-  :url &ldquo;<a href="http://example.com/FIXME">http://example.com/FIXME</a>&rdquo;
-  :license {:name &ldquo;Eclipse Public License&rdquo;</p>
-
-<pre><code>        :url "http://www.eclipse.org/legal/epl-v10.html"}
+<pre><code class="clojure">(defproject livecoding "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.5.1"]])
 </code></pre>
-
-<p>  :dependencies [[org.clojure/clojure &ldquo;1.5.1&rdquo;]])
-```</p>
 
 <p>OK, great. But now we need to add Overtone. Usually, we&rsquo;d just change <code>project.clj</code> to look like this:</p>
 
-<p>```clojure
-(defproject livecoding &ldquo;0.1.0-SNAPSHOT&rdquo;
-  :description &ldquo;FIXME: write description&rdquo;
-  :url &ldquo;<a href="http://example.com/FIXME">http://example.com/FIXME</a>&rdquo;
-  :license {:name &ldquo;Eclipse Public License&rdquo;</p>
-
-<pre><code>        :url "http://www.eclipse.org/legal/epl-v10.html"}
+<pre><code class="clojure">(defproject livecoding "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [overtone "0.8.1"]])
 </code></pre>
-
-<p>  :dependencies [[org.clojure/clojure &ldquo;1.5.1&rdquo;]</p>
-
-<pre><code>             [overtone "0.8.1"]])
-</code></pre>
-
-<p>```</p>
 
 <p>The problem with this is that Overtone has a dependency on Clojure 1.3.0, which Light Table&rsquo;s REPL refuses to use. We need to force Overtone to use Clojure 1.5.1. Let&rsquo;s fix that:</p>
 
-<p>```clojure
-(defproject livecoding &ldquo;0.1.0-SNAPSHOT&rdquo;
-  :description &ldquo;FIXME: write description&rdquo;
-  :url &ldquo;<a href="http://example.com/FIXME">http://example.com/FIXME</a>&rdquo;
-  :license {:name &ldquo;Eclipse Public License&rdquo;</p>
-
-<pre><code>        :url "http://www.eclipse.org/legal/epl-v10.html"}
+<pre><code class="clojure">(defproject livecoding "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :url "http://example.com/FIXME"
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [overtone "0.8.1" :exclusions [org.clojure/clojure]]
+                 [org.clojure/data.json "0.2.2"]])
 </code></pre>
-
-<p>  :dependencies [[org.clojure/clojure &ldquo;1.5.1&rdquo;]</p>
-
-<pre><code>             [overtone "0.8.1" :exclusions [org.clojure/clojure]]
-             [org.clojure/data.json "0.2.2"]])
-</code></pre>
-
-<p>```</p>
 
 <p>OK. So what does that do? We&rsquo;re forcing overtone to ignore its dependency on Clojure 1.3. We&rsquo;re also adding <code>data.json</code>, because Light Table&rsquo;s REPL appears to have a dependency on that. Now, we&rsquo;re good to go.</p>
 
@@ -147,19 +128,17 @@ With this configuration, we tell Travis CI that: our project is a Clojure projec
 
 <p>Let&rsquo;s change it to this:</p>
 
-<p><code>clojure
-(ns livecoding.core
+<pre><code class="clojure">(ns livecoding.core
   (:use overtone.live))
-</code></p>
+</code></pre>
 
 <p>Now let&rsquo;s get the REPL going. Just press <code>Ctrl+Enter</code> to boot up Overtone. It takes a little bit to get started, but once it boots up, let&rsquo;s just confirm it works. Change <code>core.clj</code> to:</p>
 
-<p>```clojure
-(ns livecoding.core
-  (:use overtone.live))</p>
+<pre><code class="clojure">(ns livecoding.core
+  (:use overtone.live))
 
-<p>  (demo (sin-osc))
-```</p>
+  (demo (sin-osc))
+</code></pre>
 
 <p>Highlight <code>(demo (sin-osc))</code> and press <code>Ctrl+Enter</code> and you should hear a simple Sine wave.</p>
 ]]></content>
