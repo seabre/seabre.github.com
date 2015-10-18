@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://seabre.github.io/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04/</loc>
+    <lastmod>2015-10-17T21:21:26-04:00</lastmod>
+  </url>
+  <url>
     <loc>http://seabre.github.io/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje/</loc>
     <lastmod>2014-03-09T20:56:00-04:00</lastmod>
   </url>
@@ -57,5 +61,29 @@
   </url>
   <url>
     <loc>http://seabre.github.io/blog/categories/midje/</loc>
+  </url>
+  <url>
+    <loc>http://seabre.github.io/blog/categories/u2f/</loc>
+  </url>
+  <url>
+    <loc>http://seabre.github.io/blog/categories/security/</loc>
+  </url>
+  <url>
+    <loc>http://seabre.github.io/blog/categories/linux/</loc>
+  </url>
+  <url>
+    <loc>http://seabre.github.io/blog/categories/ubuntu/</loc>
+  </url>
+  <url>
+    <loc>http://seabre.github.io/blog/categories/pam/</loc>
+  </url>
+  <url>
+    <loc>http://seabre.github.io/blog/categories/authentication/</loc>
+  </url>
+  <url>
+    <loc>http://seabre.github.io/blog/categories/yubikey/</loc>
+  </url>
+  <url>
+    <loc>http://seabre.github.io/blog/categories/yubico/</loc>
   </url>
 </urlset>

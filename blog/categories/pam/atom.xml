@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: pam | Sean Brewer]]></title>
+  <link href="http://seabre.github.io/blog/categories/pam/atom.xml" rel="self"/>
+  <link href="http://seabre.github.io/"/>
+  <updated>2015-10-17T22:40:37-04:00</updated>
+  <id>http://seabre.github.io/</id>
+  <author>
+    <name><![CDATA[Sean Brewer]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Local Two-Factor Authentication With U2F On Ubuntu 14.04]]></title>
+    <link href="http://seabre.github.io/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04/"/>
+    <updated>2015-10-17T21:21:26-04:00</updated>
+    <id>http://seabre.github.io/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04</id>
+    <content type="html"><![CDATA[<p>I received my GitHub-themed U2F Yubikey this week. U2F is an open, standardized protocol for allowing people to authenticate with a device. It hasn&rsquo;t been around long, but there are already strong efforts to get people to use it.</p>
+
+<p>If you&rsquo;ve used the Google Authenticator app,  you&rsquo;ll see the utility of a U2F key as it&rsquo;s much smaller. Getting it to work is as simple as inserting the key and pressing a button.
+A majority of implementations, and there aren&rsquo;t many, are web-services  like Google and GitHub. Yubico has produced a pam-u2f module that allows you to hook in U2F authentication to PAM. PAM is what Linux uses to allow adding and customizing various authentication mechanisms.</p>
+
+<h2>Getting Started</h2>
+
+<p>Adding U2F to Ubuntu 14.04 is actually straightforward. The documentation for the PAM module is dense, so that&rsquo;s where this article comes in. These instructions could work with Debian, but I haven&rsquo;t tried.</p>
+
+<p>First, you need to add Yubico&rsquo;s package repo:</p>
+
+<pre><code>sudo add-apt-repository ppa:yubico/stable
+sudo apt-get update
+</code></pre>
+
+<p>Then, you need to install the relevant packages:</p>
+
+<pre><code>sudo apt-get install pam-u2f pamu2fcfg
+</code></pre>
+
+<p>Now we need to install some rules for Linux&rsquo;s device manager so it can deal with the U2F keys:</p>
+
+<pre><code>sudo wget -O /etc/udev/rules.d/70-u2f.rules https://raw.githubusercontent.com/Yubico/libu2f-host/master/70-u2f.rules
+</code></pre>
+
+<p>After this, you should reboot your machine.</p>
+
+<h2>Registering Your Key</h2>
+
+<p>When your machine starts up again, we need to setup the locations that will hold our keys:</p>
+
+<pre><code>mkdir ~/.yubico ~/.config/Yubico
+touch ~/.config/Yubico/u2f_keys
+ln -s ~/.config/Yubico/u2f_keys ~/.yubico/u2f_keys
+</code></pre>
+
+<p>The latest versions of pam-u2f read from <code>~/.config/Yubico/u2f_keys</code> while the current version in the Ubuntu repository reads from <code>~/.yubico/u2f_keys</code>. With this method, the actual key is stored in <code>~/.config/Yubico</code>. The symbolic link in <code>~/.yubico/u2f_keys</code> points to <code>~/.config/Yubico/u2f_keys</code>. I set it up this way because I do not know what will happen when Yubico updates what is in the Ubuntu repository!</p>
+
+<p>Next, we need to tell the system about the key we want to register. We will use the <code>pamu2fcfg</code> tool to do that.</p>
+
+<p>Insert your U2F key and run <code>pamu2fcfg -umyusername</code> where <code>myusername</code> is your account&rsquo;s username. It should recognize your key. When it does, press the button on your key. It will generate a code that looks like this:</p>
+
+<pre><code>myusername:oijoij3o4ijfoi3j4ifj3o4jfiojewlkjflksjefw4g4g34gr34g34-g34g3-4g34g34g34g3,9043809584309850943284023023024230009809809898a09898098b
+</code></pre>
+
+<p>Now, fire up a text editor and copy the text <code>pamu2fcfg</code> generated and place it in <code>~/.config/Yubico/u2f_keys</code>. Very important note: If you use zsh, you may see a percent sign at the end. Do not include that!</p>
+
+<h2>Configuring PAM</h2>
+
+<p>Now it&rsquo;s time to setup PAM to use your U2F key. What we want to do is require the U2F key for authentication every single time you enter your password.</p>
+
+<p>Located in <code>/etc/pam.d/common-auth</code> are the particular rules for handling this. Mine before I added the U2F rules looked like this:</p>
+
+<pre><code>#
+# /etc/pam.d/common-auth - authentication settings common to all services
+#
+# This file is included from other service-specific PAM config files,
+# and should contain a list of the authentication modules that define
+# the central authentication scheme for use on the system
+# (e.g., /etc/shadow, LDAP, Kerberos, etc.).  The default is to use the
+# traditional Unix authentication mechanisms.
+#
+# As of pam 1.0.1-6, this file is managed by pam-auth-update by default.
+# To take advantage of this, it is recommended that you configure any
+# local modules either before or after the default block, and use
+# pam-auth-update to manage selection of other modules.  See
+# pam-auth-update(8) for details.
+
+# here are the per-package modules (the "Primary" block)
+auth  [success=1 default=ignore]  pam_unix.so nullok_secure
+# here's the fallback if no module succeeds
+auth  requisite     pam_deny.so
+# prime the stack with a positive return value if there isn't one already;
+# this avoids us returning an error just because nothing sets a success code
+# since the modules above will each just jump around
+auth  required      pam_permit.so
+# and here are more per-package modules (the "Additional" block)
+auth  optional      pam_cap.so
+# end of pam-auth-update config
+</code></pre>
+
+<p>To get U2F working, we need to open <code>/etc/pam.d/common-auth</code> in a text editor. Add this line at the end of the file: <code>auth sufficient pam_u2f.so debug cue</code></p>
+
+<p>With that addition, it should look like this:</p>
+
+<pre><code>#
+# /etc/pam.d/common-auth - authentication settings common to all services
+#
+# This file is included from other service-specific PAM config files,
+# and should contain a list of the authentication modules that define
+# the central authentication scheme for use on the system
+# (e.g., /etc/shadow, LDAP, Kerberos, etc.).  The default is to use the
+# traditional Unix authentication mechanisms.
+#
+# As of pam 1.0.1-6, this file is managed by pam-auth-update by default.
+# To take advantage of this, it is recommended that you configure any
+# local modules either before or after the default block, and use
+# pam-auth-update to manage selection of other modules.  See
+# pam-auth-update(8) for details.
+
+# here are the per-package modules (the "Primary" block)
+auth  [success=1 default=ignore]  pam_unix.so nullok_secure
+# here's the fallback if no module succeeds
+auth  requisite     pam_deny.so
+# prime the stack with a positive return value if there isn't one already;
+# this avoids us returning an error just because nothing sets a success code
+# since the modules above will each just jump around
+auth  required      pam_permit.so
+# and here are more per-package modules (the "Additional" block)
+auth  optional      pam_cap.so
+# end of pam-auth-update config
+
+# u2f
+auth sufficient pam_u2f.so debug cue
+</code></pre>
+
+<p>After you do this reboot. After your computer boots back up again, login. It won&rsquo;t force you to have your U2F key at this point. We need to test and make sure there are no issues first. The <code>sufficient</code> option in our U2F PAM config above allows us to not require the key.</p>
+
+<p>Open up a terminal, insert your U2F key and type <code>sudo ls</code>. It will ask you for your password. After you enter your password you should see a bunch of text. At the end you should see something like:</p>
+
+<pre><code>[../util.c:get_devices_from_authfile(140)] Length of key number 1 is 65
+[../util.c:get_devices_from_authfile(166)] Found 1 device(s) for user seabre
+[../util.c:do_authentication(219)] Device max index is 0
+[../util.c:do_authentication(242)] Attempting authentication with device number 1
+</code></pre>
+
+<p>If you do, you&rsquo;ll see your key blinking. Press the button on your U2F key. It should authenticate you and run the <code>ls</code> command.</p>
+
+<p>If you saw no problems, you can now change the U2F options in your PAM config to <code>auth required pam_u2f.so cue</code></p>
+
+<p>So now your <code>/etc/pam.d/common-auth</code> should look like this:</p>
+
+<pre><code>#
+# /etc/pam.d/common-auth - authentication settings common to all services
+#
+# This file is included from other service-specific PAM config files,
+# and should contain a list of the authentication modules that define
+# the central authentication scheme for use on the system
+# (e.g., /etc/shadow, LDAP, Kerberos, etc.).  The default is to use the
+# traditional Unix authentication mechanisms.
+#
+# As of pam 1.0.1-6, this file is managed by pam-auth-update by default.
+# To take advantage of this, it is recommended that you configure any
+# local modules either before or after the default block, and use
+# pam-auth-update to manage selection of other modules.  See
+# pam-auth-update(8) for details.
+
+# here are the per-package modules (the "Primary" block)
+auth  [success=1 default=ignore]  pam_unix.so nullok_secure
+# here's the fallback if no module succeeds
+auth  requisite     pam_deny.so
+# prime the stack with a positive return value if there isn't one already;
+# this avoids us returning an error just because nothing sets a success code
+# since the modules above will each just jump around
+auth  required      pam_permit.so
+# and here are more per-package modules (the "Additional" block)
+auth  optional      pam_cap.so
+# end of pam-auth-update config
+
+# u2f
+auth required pam_u2f.so cue
+</code></pre>
+
+<p>After this change, you will need to reboot. After you reboot, try logging in without your key. You will notice that it will tell you your password is wrong. Try again, but first insert your U2F key. Enter your password as usual and press enter. You should see your U2F key blinking. Press the button on your U2F key. You should now be logged in.</p>
+
+<h2>Recommendations</h2>
+
+<h3>Get A Second U2F Key</h3>
+
+<p>If you intend to require U2F for login, what happens if you lose your key? You won&rsquo;t be able to get in. Get a second key, register it, then put it in a safe place. Yubico <a href="https://developers.yubico.com/pam-u2f/">describes</a> the format of <code>u2f_keys</code>:</p>
+
+<pre><code>&lt;username&gt;:&lt;KeyHandle1&gt;,&lt;UserKey1&gt;:&lt;KeyHandle2&gt;,&lt;UserKey2&gt;:...
+</code></pre>
+
+<p>So you can run <code>pamu2fcfg</code> with your second key and follow the format to add it to <code>u2f_keys</code> described above.</p>
+
+<h3>Consider Full Disk Encryption</h3>
+
+<p>As far as I know, you won&rsquo;t be able to do this if you&rsquo;ve installed Ubuntu without it already. But, doing this makes it less possible to bypass two-factor authentication.</p>
+]]></content>
+  </entry>
+  
+</feed>
