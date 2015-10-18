@@ -6,10 +6,10 @@ comments: true
 categories: u2f security linux ubuntu pam authentication yubikey yubico
 ---
 
-I received my GitHub-themed U2F Yubikey this week. U2F is an open, standardized protocol for allowing people to authenticate with a device. It hasn't been around long, but there are already strong efforts to get people to use it.
+I received my GitHub-themed U2F Yubikey this week. [U2F](https://en.wikipedia.org/wiki/Universal_2nd_Factor) is an open, standardized protocol for allowing people to authenticate with a device. It hasn't been around long, but there are already [strong efforts](https://www.yubico.com/why-yubico/for-individuals/github/) to get people to use it.
 
-If you've used the Google Authenticator app,  you'll see the utility of a U2F key as it's much smaller. Getting it to work is as simple as inserting the key and pressing a button.
-A majority of implementations, and there aren't many, are web-services  like Google and GitHub. Yubico has produced a pam-u2f module that allows you to hook in U2F authentication to PAM. PAM is what Linux uses to allow adding and customizing various authentication mechanisms.
+If you've used the Google Authenticator app,  you'll see the utility of a U2F key as it's much smaller than a smartphone. Getting it to work is as simple as inserting the key and pressing a button.
+A majority of implementations, and there aren't many, are web services like Google and GitHub. [Yubico](https://www.yubico.com/) has produced a [pam-u2f](https://developers.yubico.com/pam-u2f/) module that allows you to hook in U2F authentication to PAM. PAM is what Linux uses to allow adding and customizing various authentication mechanisms.
 
 ## Getting Started
 
