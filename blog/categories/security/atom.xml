@@ -4,7 +4,7 @@
   <title><![CDATA[Category: security | Sean Brewer]]></title>
   <link href="http://seabre.github.io/blog/categories/security/atom.xml" rel="self"/>
   <link href="http://seabre.github.io/"/>
-  <updated>2015-10-17T22:45:46-04:00</updated>
+  <updated>2015-10-22T18:58:22-04:00</updated>
   <id>http://seabre.github.io/</id>
   <author>
     <name><![CDATA[Sean Brewer]]></name>
@@ -22,6 +22,12 @@
 
 <p>If you&rsquo;ve used the Google Authenticator app,  you&rsquo;ll see the utility of a U2F key as it&rsquo;s much smaller than a smartphone. Getting it to work is as simple as inserting the key and pressing a button.
 A majority of implementations, and there aren&rsquo;t many, are web services like Google and GitHub. <a href="https://www.yubico.com/">Yubico</a> has produced a <a href="https://developers.yubico.com/pam-u2f/">pam-u2f</a> module that allows you to hook in U2F authentication to PAM. PAM is what Linux uses to allow adding and customizing various authentication mechanisms.</p>
+
+<h2>Very Important Note</h2>
+
+<p>If you are worried about potentially locking yourself out of your machine, <strong>do not continue</strong>.</p>
+
+<p><strong>There is the very real risk of locking yourself out of your machine following this guide. I have not tested scenarios with a fully-encrypted disk or with an encrypted home directory. Proceed with caution.</strong></p>
 
 <h2>Getting Started</h2>
 
@@ -146,7 +152,9 @@ auth sufficient pam_u2f.so debug cue
 
 <p>If you do, you&rsquo;ll see your key blinking. Press the button on your U2F key. It should authenticate you and run the <code>ls</code> command.</p>
 
-<p>If you saw no problems, you can now change the U2F options in your PAM config to <code>auth required pam_u2f.so cue</code></p>
+<p><strong>WARNING</strong>: <strong>Do not continue</strong> if your key did not blink after you entered your password. <strong>You probably won&rsquo;t be able to log in to your machine if you follow the instructions after this point.</strong></p>
+
+<p>If you did see your key blink after you entered your password and were able to touch your key to access your machine, feel free to continue beyond this point. However, proceed with caution. You can now change the U2F options in your PAM config to <code>auth required pam_u2f.so cue</code></p>
 
 <p>So now your <code>/etc/pam.d/common-auth</code> should look like this:</p>
 
