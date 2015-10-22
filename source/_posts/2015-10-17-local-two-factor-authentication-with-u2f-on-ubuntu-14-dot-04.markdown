@@ -11,6 +11,12 @@ I received my GitHub-themed U2F Yubikey this week. [U2F](https://en.wikipedia.or
 If you've used the Google Authenticator app,  you'll see the utility of a U2F key as it's much smaller than a smartphone. Getting it to work is as simple as inserting the key and pressing a button.
 A majority of implementations, and there aren't many, are web services like Google and GitHub. [Yubico](https://www.yubico.com/) has produced a [pam-u2f](https://developers.yubico.com/pam-u2f/) module that allows you to hook in U2F authentication to PAM. PAM is what Linux uses to allow adding and customizing various authentication mechanisms.
 
+## Very Important Note
+
+If you are worried about potentially locking yourself out of your machine, **do not continue**.
+
+**There is the very real risk of locking yourself out of your machine following this guide. I have not tested scenarios with a fully-encrypted disk or with an encrypted home directory. Proceed with caution.**
+
 ## Getting Started
 
 Adding U2F to Ubuntu 14.04 is actually straightforward. The documentation for the PAM module is dense, so that's where this article comes in. These instructions could work with Debian, but I haven't tried.
@@ -144,7 +150,9 @@ Open up a terminal, insert your U2F key and type `sudo ls`. It will ask you for 
 
 If you do, you'll see your key blinking. Press the button on your U2F key. It should authenticate you and run the `ls` command.
 
-If you saw no problems, you can now change the U2F options in your PAM config to `auth required pam_u2f.so cue`
+**WARNING**: **Do not continue** if your key did not blink after you entered your password. **You probably won't be able to log in to your machine if you follow the instructions after this point.**
+
+If you did see your key blink after you entered your password and were able to touch your key to access your machine, feel free to continue beyond this point. However, proceed with caution. You can now change the U2F options in your PAM config to `auth required pam_u2f.so cue`
 
 So now your `/etc/pam.d/common-auth` should look like this:
 
