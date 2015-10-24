@@ -11,11 +11,15 @@ I received my GitHub-themed U2F Yubikey this week. [U2F](https://en.wikipedia.or
 If you've used the Google Authenticator app,  you'll see the utility of a U2F key as it's much smaller than a smartphone. Getting it to work is as simple as inserting the key and pressing a button.
 A majority of implementations, and there aren't many, are web services like Google and GitHub. [Yubico](https://www.yubico.com/) has produced a [pam-u2f](https://developers.yubico.com/pam-u2f/) module that allows you to hook in U2F authentication to PAM. PAM is what Linux uses to allow adding and customizing various authentication mechanisms.
 
-## Very Important Note
+## Very Important Note - Proceed This Guide At Your Own Risk
 
 If you are worried about potentially locking yourself out of your machine, **do not continue**.
 
-**There is the very real risk of locking yourself out of your machine following this guide. I have not tested scenarios with a fully-encrypted disk or with an encrypted home directory. Proceed with caution.**
+**There is the very real risk of locking yourself out of your machine following this guide.** 
+
+**I have not tested scenarios with a fully-encrypted disk or with an encrypted home directory.**
+
+**Proceed at your own risk.**
 
 ## Getting Started
 
@@ -137,9 +141,14 @@ auth  optional      pam_cap.so
 auth sufficient pam_u2f.so debug cue
 ```
 
-After you do this reboot. After your computer boots back up again, login. It won't force you to have your U2F key at this point. We need to test and make sure there are no issues first. The `sufficient` option in our U2F PAM config above allows us to not require the key.
+After you do this reboot. When your computer boots back up again. Place your U2F key in a USB slot. Type in your password and login. Your U2F key should blink. Touch the button on your U2F key and it should log you in.
 
-Open up a terminal, insert your U2F key and type `sudo ls`. It will ask you for your password. After you enter your password you should see a bunch of text. At the end you should see something like:
+**WARNING**: If your U2F key **did not blink** or pressing the blinking button on your U2F **did not** log you in, **do not continue this guide**. 
+
+The `sufficient` option in our U2F PAM config above allows us to not require the key, but we can still *use* the key optionally.
+
+
+Let's test the U2F key on `sudo` after we login. Open up a terminal, insert your U2F key and type `sudo ls`. It will ask you for your password. After you enter your password you should see a bunch of text. At the end you should see something like:
 
 ```
 [../util.c:get_devices_from_authfile(140)] Length of key number 1 is 65
