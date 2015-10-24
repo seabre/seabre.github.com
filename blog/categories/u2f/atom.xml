@@ -4,7 +4,7 @@
   <title><![CDATA[Category: u2f | Sean Brewer]]></title>
   <link href="http://seabre.github.io/blog/categories/u2f/atom.xml" rel="self"/>
   <link href="http://seabre.github.io/"/>
-  <updated>2015-10-22T18:58:22-04:00</updated>
+  <updated>2015-10-23T20:15:50-04:00</updated>
   <id>http://seabre.github.io/</id>
   <author>
     <name><![CDATA[Sean Brewer]]></name>
@@ -23,11 +23,15 @@
 <p>If you&rsquo;ve used the Google Authenticator app,  you&rsquo;ll see the utility of a U2F key as it&rsquo;s much smaller than a smartphone. Getting it to work is as simple as inserting the key and pressing a button.
 A majority of implementations, and there aren&rsquo;t many, are web services like Google and GitHub. <a href="https://www.yubico.com/">Yubico</a> has produced a <a href="https://developers.yubico.com/pam-u2f/">pam-u2f</a> module that allows you to hook in U2F authentication to PAM. PAM is what Linux uses to allow adding and customizing various authentication mechanisms.</p>
 
-<h2>Very Important Note</h2>
+<h2>Very Important Note - Proceed This Guide At Your Own Risk</h2>
 
 <p>If you are worried about potentially locking yourself out of your machine, <strong>do not continue</strong>.</p>
 
-<p><strong>There is the very real risk of locking yourself out of your machine following this guide. I have not tested scenarios with a fully-encrypted disk or with an encrypted home directory. Proceed with caution.</strong></p>
+<p><strong>There is the very real risk of locking yourself out of your machine following this guide.</strong></p>
+
+<p><strong>I have not tested scenarios with a fully-encrypted disk or with an encrypted home directory.</strong></p>
+
+<p><strong>Proceed at your own risk.</strong></p>
 
 <h2>Getting Started</h2>
 
@@ -140,9 +144,13 @@ auth  optional      pam_cap.so
 auth sufficient pam_u2f.so debug cue
 </code></pre>
 
-<p>After you do this reboot. After your computer boots back up again, login. It won&rsquo;t force you to have your U2F key at this point. We need to test and make sure there are no issues first. The <code>sufficient</code> option in our U2F PAM config above allows us to not require the key.</p>
+<p>After you do this reboot. When your computer boots back up again. Place your U2F key in a USB slot. Type in your password and login. Your U2F key should blink. Touch the button on your U2F key and it should log you in.</p>
 
-<p>Open up a terminal, insert your U2F key and type <code>sudo ls</code>. It will ask you for your password. After you enter your password you should see a bunch of text. At the end you should see something like:</p>
+<p><strong>WARNING</strong>: If your U2F key <strong>did not blink</strong> or pressing the blinking button on your U2F <strong>did not</strong> log you in, <strong>do not continue this guide</strong>.</p>
+
+<p>The <code>sufficient</code> option in our U2F PAM config above allows us to not require the key, but we can still <em>use</em> the key optionally.</p>
+
+<p>Let&rsquo;s test the U2F key on <code>sudo</code> after we login. Open up a terminal, insert your U2F key and type <code>sudo ls</code>. It will ask you for your password. After you enter your password you should see a bunch of text. At the end you should see something like:</p>
 
 <pre><code>[../util.c:get_devices_from_authfile(140)] Length of key number 1 is 65
 [../util.c:get_devices_from_authfile(166)] Found 1 device(s) for user seabre
