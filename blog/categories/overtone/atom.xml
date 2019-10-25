@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: overtone | Sean Brewer]]></title>
-  <link href="http://seabre.github.io/blog/categories/overtone/atom.xml" rel="self"/>
-  <link href="http://seabre.github.io/"/>
-  <updated>2015-10-23T20:15:50-04:00</updated>
-  <id>http://seabre.github.io/</id>
+  <link href="https://www.seabre.com/blog/categories/overtone/atom.xml" rel="self"/>
+  <link href="https://www.seabre.com/"/>
+  <updated>2019-10-25T03:05:52-04:00</updated>
+  <id>https://www.seabre.com/</id>
   <author>
     <name><![CDATA[Sean Brewer]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[A Simple Livecoding Environment For Overtone With Light Table]]></title>
-    <link href="http://seabre.github.io/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/"/>
+    <link href="https://www.seabre.com/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/"/>
     <updated>2013-08-31T13:08:00-04:00</updated>
-    <id>http://seabre.github.io/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table</id>
+    <id>https://www.seabre.com/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve been using <a href="http://overtone.github.io/">Overtone</a> off and on for a while, and I&rsquo;ve been wanting to try out <a href="http://www.lighttable.com/">Light Table</a>, so I decided to see if I could get Overtone working with it.</p>
 
 <p>Emacs is pretty much the standard for livecoding in Overtone, but it&rsquo;s not the most accessible environment for beginners. I actually use vim, but it&rsquo;s not that great, either. Light Table seems to be a good alternative, but I ran into some project dependency problems getting it setup. The fixes are easy to duplicate. After the problem is solved, it&rsquo;s nice.</p>

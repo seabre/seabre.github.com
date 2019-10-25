@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: midje | Sean Brewer]]></title>
-  <link href="http://seabre.github.io/blog/categories/midje/atom.xml" rel="self"/>
-  <link href="http://seabre.github.io/"/>
-  <updated>2015-10-23T20:15:50-04:00</updated>
-  <id>http://seabre.github.io/</id>
+  <link href="https://www.seabre.com/blog/categories/midje/atom.xml" rel="self"/>
+  <link href="https://www.seabre.com/"/>
+  <updated>2019-10-25T03:05:52-04:00</updated>
+  <id>https://www.seabre.com/</id>
   <author>
     <name><![CDATA[Sean Brewer]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Setting Up Travis CI for OpenCV and Midje]]></title>
-    <link href="http://seabre.github.io/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje/"/>
+    <link href="https://www.seabre.com/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje/"/>
     <updated>2014-03-09T20:56:00-04:00</updated>
-    <id>http://seabre.github.io/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje</id>
+    <id>https://www.seabre.com/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje</id>
     <content type="html"><![CDATA[<p>I’ve been fiddling with <a href="http://opencv.org">OpenCV</a> for a few weeks. Using OpenCV and Clojure is straightforward. The hardest part was setting up OpenCV.</p>
 
 <p>When I’m experimenting and I get to a place where I feel like I know what I’m doing, I’ll start writing tests. Eventually you&rsquo;ll setup continuous integration, but then you remember how difficult installing OpenCV was! If you’d like to use Travis CI with your Clojure project using OpenCV, I’ve already done the work for you! Swapping out midje isn’t a problem, if you’d rather use core.test or speclj, but I’m going to focus on midje here.</p>

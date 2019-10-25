@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: yubico | Sean Brewer]]></title>
-  <link href="http://seabre.github.io/blog/categories/yubico/atom.xml" rel="self"/>
-  <link href="http://seabre.github.io/"/>
-  <updated>2015-10-23T20:15:50-04:00</updated>
-  <id>http://seabre.github.io/</id>
+  <link href="https://www.seabre.com/blog/categories/yubico/atom.xml" rel="self"/>
+  <link href="https://www.seabre.com/"/>
+  <updated>2019-10-25T03:05:52-04:00</updated>
+  <id>https://www.seabre.com/</id>
   <author>
     <name><![CDATA[Sean Brewer]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Local Two-Factor Authentication With U2F On Ubuntu 14.04]]></title>
-    <link href="http://seabre.github.io/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04/"/>
+    <link href="https://www.seabre.com/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04/"/>
     <updated>2015-10-17T21:21:26-04:00</updated>
-    <id>http://seabre.github.io/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04</id>
+    <id>https://www.seabre.com/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04</id>
     <content type="html"><![CDATA[<p>I received my GitHub-themed U2F Yubikey this week. <a href="https://en.wikipedia.org/wiki/Universal_2nd_Factor">U2F</a> is an open, standardized protocol for allowing people to authenticate with a device. It hasn&rsquo;t been around long, but there are already <a href="https://www.yubico.com/why-yubico/for-individuals/github/">strong efforts</a> to get people to use it.</p>
 
 <p>If you&rsquo;ve used the Google Authenticator app,  you&rsquo;ll see the utility of a U2F key as it&rsquo;s much smaller than a smartphone. Getting it to work is as simple as inserting the key and pressing a button.

@@ -1,89 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>http://seabre.github.io/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04/</loc>
-    <lastmod>2015-10-17T21:21:26-04:00</lastmod>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje/</loc>
-    <lastmod>2014-03-09T20:56:00-04:00</lastmod>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/</loc>
-    <lastmod>2013-08-31T13:08:00-04:00</lastmod>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation/</loc>
-    <lastmod>2012-04-14T23:40:00-04:00</lastmod>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/2012/04/13/common-mysql-tasks/</loc>
-    <lastmod>2012-04-13T00:34:00-04:00</lastmod>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/archives/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/mysql/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/coffeescript/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/math/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/clojure/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/overtone/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/lighttable/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/livecoding/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/music/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/travis-ci/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/testing/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/opencv/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/midje/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/u2f/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/security/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/linux/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/ubuntu/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/pam/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/authentication/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/yubikey/</loc>
-  </url>
-  <url>
-    <loc>http://seabre.github.io/blog/categories/yubico/</loc>
-  </url>
+<url>
+<loc>https://www.seabre.com/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04/</loc>
+<lastmod>2015-10-17T21:21:26-04:00</lastmod>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/2014/03/09/setting-up-travis-ci-for-opencv-and-midje/</loc>
+<lastmod>2014-03-09T20:56:00-04:00</lastmod>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/</loc>
+<lastmod>2013-08-31T13:08:00-04:00</lastmod>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation/</loc>
+<lastmod>2012-04-14T23:40:00-04:00</lastmod>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/2012/04/13/common-mysql-tasks/</loc>
+<lastmod>2012-04-13T00:34:00-04:00</lastmod>
+</url>
+<url>
+<loc>https://www.seabre.com/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/archives/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/mysql/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/coffeescript/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/math/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/clojure/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/overtone/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/lighttable/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/livecoding/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/music/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/travis-ci/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/testing/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/opencv/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/midje/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/u2f/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/security/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/linux/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/ubuntu/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/pam/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/authentication/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/yubikey/</loc>
+</url>
+<url>
+<loc>https://www.seabre.com/blog/categories/yubico/</loc>
+</url>
 </urlset>

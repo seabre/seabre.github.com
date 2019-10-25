@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: math | Sean Brewer]]></title>
-  <link href="http://seabre.github.io/blog/categories/math/atom.xml" rel="self"/>
-  <link href="http://seabre.github.io/"/>
-  <updated>2015-10-23T20:15:50-04:00</updated>
-  <id>http://seabre.github.io/</id>
+  <link href="https://www.seabre.com/blog/categories/math/atom.xml" rel="self"/>
+  <link href="https://www.seabre.com/"/>
+  <updated>2019-10-25T03:05:52-04:00</updated>
+  <id>https://www.seabre.com/</id>
   <author>
     <name><![CDATA[Sean Brewer]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Blum Blum Shub Pseudo Random Number Generator Coffeescript Implementation]]></title>
-    <link href="http://seabre.github.io/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation/"/>
+    <link href="https://www.seabre.com/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation/"/>
     <updated>2012-04-14T23:40:00-04:00</updated>
-    <id>http://seabre.github.io/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation</id>
+    <id>https://www.seabre.com/blog/2012/04/14/blum-blum-shub-pseudo-random-number-generator-coffeescript-implementation</id>
     <content type="html"><![CDATA[<p>This weekend hasn&rsquo;t been as busy as they have been lately, so I&rsquo;ve had a lot more time to just sit around. I was reading some articles on PRNGs, and a PRNG I&rsquo;ve never heard of caught my eye. Mainly, I think, because of its name. <a href="http://en.wikipedia.org/wiki/Blum_Blum_Shub">Blum Blum Shub</a> is a PRNG devised by some mathematicians and computer scientists in the mid 1980&rsquo;s. I decided to do a Coffeescript implementation of it.</p>
 
 <p><div><script src='https://gist.github.com/2389826.js'></script>
