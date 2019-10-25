@@ -4,7 +4,7 @@
   <title><![CDATA[Sean Brewer]]></title>
   <link href="https://www.seabre.com/atom.xml" rel="self"/>
   <link href="https://www.seabre.com/"/>
-  <updated>2019-10-25T03:22:41-04:00</updated>
+  <updated>2019-10-25T03:36:57-04:00</updated>
   <id>https://www.seabre.com/</id>
   <author>
     <name><![CDATA[Sean Brewer]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Local Two-Factor Authentication With U2F on Ubuntu 14.04]]></title>
+    <title type="html"><![CDATA[Local Two-Factor Authentication With U2F On Ubuntu 14.04]]></title>
     <link href="https://www.seabre.com/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04/"/>
     <updated>2015-10-17T21:21:26-04:00</updated>
     <id>https://www.seabre.com/blog/2015/10/17/local-two-factor-authentication-with-u2f-on-ubuntu-14-dot-04</id>
@@ -407,7 +407,7 @@ A majority of implementations, and there aren&rsquo;t many, are web services lik
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[A Simple Livecoding Environment for Overtone With Light Table]]></title>
+    <title type="html"><![CDATA[A Simple Livecoding Environment For Overtone With Light Table]]></title>
     <link href="https://www.seabre.com/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table/"/>
     <updated>2013-08-31T13:08:00-04:00</updated>
     <id>https://www.seabre.com/blog/2013/08/31/a-simple-livecoding-environment-for-overtone-with-light-table</id>
