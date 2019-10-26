@@ -11,7 +11,7 @@ article{
 	}
 	h2.title{
 		font-size: 36px;
-		font-weight: 300;
+		font-weight: bold;
 		line-height: 1;
 		margin-bottom: 20px;
 		margin-left:0px;
@@ -26,9 +26,11 @@ article{
 		}
 		border-bottom: 1px solid $color-gray04;
 		padding-bottom: .75em;
+    /*
 		@media screen and (max-width: 620px) {
-		font-size: 18px;
+		font-size: 36px;
 		}
+    */
 
 	}
 	
