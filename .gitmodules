@@ -1,3 +1,6 @@
 [submodule ".themes/cleanpress"]
 	path = .themes/cleanpress
 	url = git://github.com/macjasp/cleanpress.git
+[submodule ".themes/cleanpress-modern"]
+	path = .themes/cleanpress-modern
+	url = git://github.com/seabre/cleanpress-modern.git
