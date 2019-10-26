@@ -16,7 +16,7 @@ $header-height: 30px;
 	margin-bottom:40px;
 	}
 	a{
-		color: $color-gray01;
+		color: $color-black;
 		@include transition(color 0.3s);
 		&:hover{
 			color: $color-main;
@@ -133,7 +133,7 @@ $header-height: 30px;
 						padding-left: 10px;
 					}
 					&:hover{
-						color: $color-gray01;
+						color: $color-black;
 					}
 					&:only-child{
 						&:after{
@@ -313,7 +313,7 @@ $header-height: 30px;
 			&:focus, &:active{
 				background: #fff;
 				border-top: 1px solid $color-gray03;
-				color: $color-gray01;
+				color: $color-black;
 				outline: none;
 			}
 		}

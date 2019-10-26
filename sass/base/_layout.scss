@@ -5,12 +5,12 @@ $max-width: 1000px;
 	padding: 0;
 }
 body{
-	font-family: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", Arial, sans-serif;
-	font-size: 16px;
+	font-family: $font-default;
+	font-size: 1.2em;
 	font-weight: 300;
 	line-height: 1.5;
 	background: $color-background;
-    color: $color-gray01;
+    color: $color-black;
 	@media screen and (max-width: 1040px){
 		margin: 0 20px;
 	}
@@ -21,15 +21,17 @@ body{
 }
 
 h1{
+	font-family: $font-headings;
 	font-size: 36px;
 }
 h2{
+	font-family: $font-headings;
 	font-size: 36px;
 	line-height:1;
 	font-weight:300;
 }
 h3{
-	
+	font-family: $font-headings;
 	font-size: 20px;
 	line-height: 1.2;
 	margin: 1.2em 0 0 0;
@@ -41,7 +43,7 @@ h3{
 	}
 a {
  	text-decoration:none;
-	color:#bf0222;
+	color:$color-red;
 	-webkit-transition:border .25s linear;
 	-moz-transition:border .25s linear;
 	-ms-transition:border .25s linear;
@@ -50,7 +52,7 @@ a {
 }
 
 a:hover {
-	border-bottom:1px solid #bf0222;
+	border-bottom:3px solid $color-blue;
 }
 
 .alignleft{

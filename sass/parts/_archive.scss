@@ -42,7 +42,7 @@
 			margin-bottom: 0;
 		}
 		.meta{
-			color: $color-gray02;
+			color: $color-black;
 			font-size: 1em;
 			line-height: 2;
 			margin-top: 15px;
@@ -59,17 +59,17 @@
 				}
 			}
 			a{
-				color: $color-gray02;
+				color: $color-black;
 				@include transition(0.3s);
 				&:hover{
-					color: $color-gray01;
+					color: $color-black;
 				}
 			}
 			.date, .tags, .comments {
 			    padding-left: 30px;
 			    position: relative;
 			    &:before{
-			      color: $color-gray02;
+			      color: $color-red;
 			      font: 1.3em $font-icon;
 			      line-height: 1.6em;
 			      position: absolute;
