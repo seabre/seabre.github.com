@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: https://www.seabre.com/sitemap.xml 
+Sitemap: https://seabre.com/sitemap.xml 
