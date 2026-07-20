@@ -1,4 +1,4 @@
-require 'pygments'
+require 'rouge'
 require 'fileutils'
 require 'digest/md5'
 
@@ -21,17 +21,22 @@ module HighlightCode
       if File.exist?(path)
         highlighted_code = File.read(path)
       else
-        begin
-          highlighted_code = Pygments.highlight(code, :lexer => lang, :formatter => 'html', :options => {:encoding => 'utf-8', :startinline => true})
-        rescue MentosError
-          raise "Pygments can't parse unknown language: #{lang}."
-        end
+        highlighted_code = rouge_highlight(code, lang)
         File.open(path, 'w') {|f| f.print(highlighted_code) }
       end
     else
-      highlighted_code = Pygments.highlight(code, :lexer => lang, :formatter => 'html', :options => {:encoding => 'utf-8', :startinline => true})
+      highlighted_code = rouge_highlight(code, lang)
     end
     highlighted_code
+  end
+
+  # Highlight with Rouge (pure Ruby), emitting the same
+  # <div class="highlight"><pre>...</pre></div> shape the old Pygments
+  # formatter produced, so downstream tableize_code still works.
+  def self.rouge_highlight(code, lang)
+    lexer = Rouge::Lexer.find_fancy(lang, code) || Rouge::Lexers::PlainText
+    inner = Rouge::Formatters::HTML.new.format(lexer.lex(code))
+    "<div class=\"highlight\"><pre>#{inner}</pre></div>"
   end
   def self.tableize_code (str, lang = '')
     table = '<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers">'

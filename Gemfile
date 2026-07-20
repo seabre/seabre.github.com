@@ -3,6 +3,8 @@ source "https://rubygems.org"
 group :development do
   gem 'rake', '~> 10.0'
   gem 'jekyll', '~> 2.0'
+  gem 'ffi', '~> 1.15.5'
+  gem 'rouge', '~> 3.30'
   gem 'octopress-hooks', '~> 2.2'
   gem 'octopress-date-format', '~> 2.0'
   gem 'jekyll-sitemap'
